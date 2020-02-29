@@ -35,6 +35,10 @@ body {
         color: #ffffff;
 }
 
+::placeholder {
+        color: rgb(216, 216, 218);
+}
+
 .container{
         color: #ffffff;
 }
@@ -60,9 +64,10 @@ body {
         background-color: #ff0000;
         font-weight: 400;
         font-size: 16px;
-        cursor: pointer;
+        transition: 1s ease-out;
 }
 
 .container button:hover {
-        
+        background-color: #ff000097;
+        cursor: pointer;
 }
