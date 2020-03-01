@@ -2,7 +2,9 @@ Vue.component('simple' , {
     template:`
         <div class="container">
                 <span> Simple Interest Calculator </span>
-                 <br> 
+                 <br>
+                 <br>
+                 <br>
                  <input v-model="principal" type="tel" placeholder="Principal"> 
                  <br>
             
@@ -15,25 +17,26 @@ Vue.component('simple' , {
                 <br>
                 <p v-show="!this.results == 0"> Your simple interest is ₦{{ results }} </p>
                 <div>
-                <button >Reset</button>
+                <button v-show="principal || rate || time" @click="reset">Reset</button>
                 </div>
         </div>`,
     data(){
         return {  
         principal: '',
         rate: '',
-        time: ''
-        }
+        time: '',
+        reset: false
+        } 
     },
     computed: {
         results: function () {
              return (this.principal * this.rate * this.time) /100
         },
-        isCompleted() {
-            return this.principal || this.rate || this.time
-        },
         reset: function() {
-            
+            this.principal = null,
+            this.rate = null,
+            this.time = null,
+            this.reset = null;
         }
     }
 });
