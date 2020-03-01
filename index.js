@@ -17,27 +17,30 @@ Vue.component('simple' , {
                 <br>
                 <p v-show="!this.results == 0"> Your simple interest is ₦{{ results }} </p>
                 <div>
-                <button v-show="principal || rate || time" @click="reset">Reset</button>
+                <button v-show="principal || rate || time" v-on:click="reset">Reset</button>
                 </div>
         </div>`,
+
     data(){
         return {  
         principal: '',
         rate: '',
         time: '',
-        reset: false
         } 
     },
+
+    methods: {
+         reset() {
+            this.principal = null,
+            this.rate = null;
+            this.time = null;
+        }
+    },
+
     computed: {
         results: function () {
              return (this.principal * this.rate * this.time) /100
         },
-        reset: function() {
-            this.principal = null,
-            this.rate = null,
-            this.time = null,
-            this.reset = null;
-        }
     }
 });
 
